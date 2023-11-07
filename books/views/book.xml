@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!-- Vista de la gestion de libros -->
+        <record id="view_books" model="ir.ui.view">
+            <field name="name">view.books</field>
+            <field name="model">book</field>
+            <field name="arch" type="xml">
+                <!-- Listado de libros -->
+                <tree string="Listado">
+                    <field name="author"/>
+                    <field name="release_date" />
+                    <field name="total_pages" />
+                </tree>
+           </field>
+        </record>
+
+        <!-- Filtros  -->
+        <record id="view_books_filters" model="ir.ui.view">
+            <field name="name">view.books</field>
+            <field name="model">book</field>
+            <field name="arch" type="xml">
+                <search string="Autor">
+                    <filter string="Continua escribiendo" name="author_continues_writing" domain="[('author_continues_writing', '=', True)]" />
+                    <group expand="1" string="Agrupar por">
+                        <filter string="Autor" name="author"  context="{'group_by':'author'}" />
+                        <filter string="Total de paginas" name="total_pages"  context="{'group_by':'total_pages'}" />
+                        <filter string="Fecha de lanzamiento" name="release_date"  context="{'group_by':'release_date'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Busqueda  -->
+        <record id="view_books_search" model="ir.ui.view">
+            <field name="name">view.books</field>
+            <field name="model">book</field>
+            <field name="arch" type="xml">
+                <search string="Autor">
+                    <field name="author" />
+                    <field name="total_pages" />
+                    <field name="author_continues_writing" />
+                </search>
+            </field>
+        </record>
+
+        <record id='action_book_model' model='ir.actions.act_window'>
+            <field name='name'>Books</field>
+            <field name='res_model'>book</field>
+            <field name='view_mode'>tree,form</field>
+        </record>
+        
+        <menuitem
+            id='id_menu_books_model'
+            name='Books'
+            action='action_book_model' />       
+    </data>
+</odoo>
