@@ -10,6 +10,8 @@
                     <field name="author"/>
                     <field name="release_date" />
                     <field name="total_pages" />
+                    <field name="price" />
+                    <field name="books_category_ids" />
                 </tree>
            </field>
         </record>
@@ -21,6 +23,7 @@
             <field name="arch" type="xml">
                 <search string="Autor">
                     <filter string="Continua escribiendo" name="author_continues_writing" domain="[('author_continues_writing', '=', True)]" />
+                    <filter string="Mayor a 50 paginas" name="total_pages" domain="[('total_pages', '>', 50)]" />
                     <group expand="1" string="Agrupar por">
                         <filter string="Autor" name="author"  context="{'group_by':'author'}" />
                         <filter string="Total de paginas" name="total_pages"  context="{'group_by':'total_pages'}" />
@@ -43,15 +46,19 @@
             </field>
         </record>
 
+        <!-- Accion  -->
         <record id='action_book_model' model='ir.actions.act_window'>
             <field name='name'>Books</field>
             <field name='res_model'>book</field>
             <field name='view_mode'>tree,form</field>
         </record>
         
+
+        <!-- Menues -->
         <menuitem
-            id='id_menu_books_model'
+            id='menu_books_root'
             name='Books'
+            groups="books.group_books_library_user"
             action='action_book_model' />       
     </data>
 </odoo>

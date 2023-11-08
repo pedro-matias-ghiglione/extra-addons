@@ -1,17 +1,28 @@
 <odoo>
+    <record id="books_category" model="ir.module.category">
+        <field name="name">Biblioteca</field>
+        <field name="description">Libros en la biblioteca</field>
+        <field name="sequence">1</field>
+    </record>
     <!-- Grupos de roles de la libreria -->
     <record id="group_books_library_user" model="res.groups">
         <field name="name">library_user</field>
+        <field name="category_id" ref="books_category"/>
         <field name="comment">Rol de usuario de biblioteca</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <record id="group_books_library_assistant" model="res.groups">
         <field name="name">library_assistant</field>
+        <field name="category_id" ref="books_category"/>
         <field name="comment">Rol de asistente de biblioteca</field>
+        <field name="implied_ids" eval="[(4, ref('group_books_library_user'))]"/>
     </record>
 
     <record id="group_books_library_manager" model="res.groups">
         <field name="name">library_manager</field>
+        <field name="category_id" ref="books_category"/>
         <field name="comment"> Rol de administrador de biblioteca </field>
+        <field name="implied_ids" eval="[(4, ref('group_books_library_assistant'))]"/>
     </record>
 </odoo>
