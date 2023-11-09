@@ -1,0 +1,30 @@
+<odoo>
+
+    <record model="ir.ui.view" id="sale_wizard_book_copy_form">
+        <field name="name">sale_wizard_book_copy_form</field>
+        <field name="model">book.copy.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                
+                    <group string="Wizard Book Copy">
+                        
+                        <field name="book_copy_id"/>
+                        <field name="res_partner_id"/>
+                        <field name="status"/>
+    
+                    </group>
+                
+                </sheet>
+                <footer>
+                    <button name="change_book_copy_state" string="Change book copy status" type="object"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+            
+        </field>
+    </record>
+
+
+
+</odoo>
