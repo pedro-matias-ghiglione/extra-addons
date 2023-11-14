@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reporte PDF -->
+    <template id="report_book_copy">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2><t t-field="o.book_id.name" /></h2>
+                        <p>Codigo: <span t-field="o.code" /></p>
+                        <p>Cliente: <span t-field="o.res_partner_id" /></p>
+                        <p>Estado: <span t-field="o.status" /></p>
+                        <p>Libro: <span t-field="o.book_id" /></p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Formato de PDF -->
+    <record id="paperformat_book_copy" model="report.paperformat">
+        <field name="name">Ejemplares</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">200</field>
+        <field name="page_width">150</field>
+        <field name="orientation">Portrait</field>
+    </record>
+
+
+
+    <!-- Accion para imprimir -->
+        <record id="action_book_copy_pdf" model="ir.actions.report">
+            <field name="name">Imprimir reporte</field>
+            <field name="model">book_copy</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">report_book_copy</field>
+            <field name="report_file">report_book_copy</field>
+            <field name="binding_model_id" ref="model_book_copy"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="paperformat_book_copy"/>
+        </record>
+</odoo>

@@ -10,4 +10,4 @@ class Books_Category(models.Model):
     _description = 'Category of books'
     _rec_name = 'name'
 
-    name = fields.Char(string='Nombre')
+    name = fields.Char(string='Nombre', required=True)

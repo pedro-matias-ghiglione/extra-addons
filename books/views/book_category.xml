@@ -14,6 +14,13 @@
             parent='menu_books_root'
             name='Books category'
             action='action_book_category_model'   
+            groups="books.group_books_library_user" /> 
+
+        <menuitem
+            id='submenu_books_category_model'
+            parent='menu_books_category_model'
+            name='Books category'
+            action='action_book_category_model'   
             groups="books.group_books_library_user" />    
             
     </data>

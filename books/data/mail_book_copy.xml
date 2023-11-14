@@ -1,0 +1,28 @@
+<odoo>
+    <record id="mail_template_book_copy" model="mail.template">
+        <field name="name">mail.template.book_copy</field>
+        <field name="model_id" ref="model_book_copy"/>
+        <field name="subject">{{ object.book_id.name }} - {{ object.code }} - {{ object.status}}</field>
+        <field name="email_from">pedro.ghiglione@mirgor.com</field>
+        <field name="partner_to">{{ object.res_partner_id.id }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>Hola ${object.res_partner_id.name},</p>
+                <p>Muchas gracias por su 
+                    <t t-if="object.status == 'sold'">
+                        Compra
+                    </t> 
+                    <t t-if="object.status == 'rented'">
+                        Alquiler
+                    </t> 
+                .</p>
+                <p>Producto: <t t-out="object.code" /> </p>
+                <p>Titulo: <t t-out="object.book_id.name" /> </p>
+                <p>Autor:  <t t-out="object.book_id.author" /> </p>
+                <t t-if="object.status == 'rented'">            
+                    <p>Fecha de devolucion:<t t-out="object.date_finish" /> </p>            
+                </t> 
+            </div>
+        </field>
+    </record>
+</odoo>

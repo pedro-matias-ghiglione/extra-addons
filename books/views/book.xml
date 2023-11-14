@@ -7,11 +7,12 @@
             <field name="arch" type="xml">
                 <!-- Listado de libros -->
                 <tree string="Listado">
+                    <field name="name"/>
                     <field name="author"/>
                     <field name="release_date" />
                     <field name="total_pages" />
                     <field name="price" />
-                    <field name="books_category_ids" />
+                    <field name="books_category_ids" widget="many2many_tags"/>
                 </tree>
            </field>
         </record>
@@ -59,6 +60,14 @@
             id='menu_books_root'
             name='Books'
             groups="books.group_books_library_user"
-            action='action_book_model' />       
+            action='action_book_model' />     
+
+        <menuitem
+            id='submenu_books_root'
+            name='Books'
+            groups="books.group_books_library_user"
+            parent='menu_books_root'
+            action='action_book_model' />     
+              
     </data>
 </odoo>

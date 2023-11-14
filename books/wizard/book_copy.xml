@@ -12,6 +12,7 @@
                         <field name="book_copy_id"/>
                         <field name="res_partner_id"/>
                         <field name="status"/>
+                        <field name="date_finish" attrs="{'invisible': [('status', '!=', 'rented')]}"/>
     
                     </group>
                 
@@ -24,7 +25,5 @@
             
         </field>
     </record>
-
-
 
 </odoo>

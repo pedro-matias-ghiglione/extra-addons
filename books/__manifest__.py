@@ -25,15 +25,17 @@
     'website': '',
     'license': 'AGPL-3',
     'depends': [
-        'base'
+        'mail'
     ],
     'data': [
+      'reports/book_copy_reports.xml',
       'security/books_security.xml',
       'security/ir.model.access.csv',
       'views/book.xml',
       'views/book_category.xml',
       'views/book_copy.xml',
       'wizard/book_copy.xml',
+      'data/mail_book_copy.xml',
     ],
     'installable': True,
     'auto_install': False,
